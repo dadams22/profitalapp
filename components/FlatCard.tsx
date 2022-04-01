@@ -1,5 +1,5 @@
 import React from "react";
-import {AspectRatio, Box, Center, Heading, HStack, Image, Pressable, Stack, Text} from "native-base";
+import {AspectRatio, Box, Heading, Image, Pressable, Stack, Text} from "native-base";
 
 interface ComponentProps {
     title: string;
@@ -20,15 +20,6 @@ function FlatCard({ title, subtitle, imageUri, tag, description, footerText, onP
                         <AspectRatio w="100%" ratio={16 / 9}>
                             <Image source={{ uri: imageUri }} alt="image" />
                         </AspectRatio>
-                        {/*<Center bg="violet.500" _dark={{*/}
-                        {/*    bg: "violet.400"*/}
-                        {/*}} _text={{*/}
-                        {/*    color: "warmGray.50",*/}
-                        {/*    fontWeight: "700",*/}
-                        {/*    fontSize: "xs"*/}
-                        {/*}} position="absolute" bottom="0" px="3" py="1.5">*/}
-                        {/*    PHOTOS*/}
-                        {/*</Center>*/}
                     </Box>
                     <Stack p="4" space={3}>
                         <Stack space={2}>
