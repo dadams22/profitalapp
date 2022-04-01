@@ -1,11 +1,11 @@
 import React from "react";
 import WebView from "react-native-webview";
-import {Box, Container, Icon, Link, Pressable, Text, View} from "native-base";
-import {useAppDispatch} from "../state/hooks";
-import {close} from "../state/webSlice";
-import { FontAwesome } from '@expo/vector-icons';
+import {Box, Pressable} from "native-base";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
+
+import {useAppDispatch} from "../state/hooks";
+import {close} from "../state/webSlice";
 
 interface ComponentProps {
     url: string;
