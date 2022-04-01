@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import AuthService from "../services/AuthService";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiBase from "../services/ApiBase";
 
 export interface UserState {
