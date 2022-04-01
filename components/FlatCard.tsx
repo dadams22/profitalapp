@@ -35,7 +35,7 @@ function FlatCard({ title, subtitle, imageUri, tag, description, footerText, onP
                             <Heading size="md" ml="-1" color={'light.100'}>
                                 {title}
                             </Heading>
-                            <Text fontSize="xs" color={'tertiary.400'} fontWeight="500" ml="-0.5" mt="-1">
+                            <Text fontSize="xs" color={'violet.400'} fontWeight="500" ml="-0.5" mt="-1">
                                 {subtitle}
                             </Text>
                         </Stack>

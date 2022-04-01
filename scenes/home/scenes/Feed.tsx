@@ -36,8 +36,6 @@ function Feed() {
 
     useLayoutEffect(() => {
         fetchMoreArticles();
-        dispatch(openUrl('https://seekingalpha.com/article/4497874-apple-iphone-subscriptions-could-be-massive'));
-        // AuthService.getInstance().obtainPlaidLinkToken();
     }, []);
 
     return (
@@ -73,7 +71,7 @@ function Feed() {
                         />
                     </Box>
                 )}
-                ListFooterComponent={<Center height={articles ? '100%' : undefined}><Spinner size="lg" color="tertiary.500" my={20} /></Center>}
+                ListFooterComponent={<Spinner size="lg" color="violet.500" my={20} />}
             />
         </Box>
     );

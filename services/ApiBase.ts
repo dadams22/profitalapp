@@ -2,7 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import Constants from "expo-constants";
 
 const { manifest } = Constants;
-const API_BASE_URL = 'http://a593-2610-148-1f02-3000-455-b9b8-7e4c-2093.ngrok.io/api/';
+const API_BASE_URL = 'http://5068-2610-148-1f02-3000-a560-5a10-c773-59c8.ngrok.io/api';
 // const API_BASE_URL = 'https://google.com';
 console.log(API_BASE_URL);
 

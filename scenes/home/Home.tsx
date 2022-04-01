@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Center} from "native-base";
+import {Box, Center, useTheme} from "native-base";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Feed from "./scenes/Feed";
 import Portfolio from "./scenes/Portfolio";
@@ -42,6 +42,8 @@ const TAB_LIST: TabDefinition[] = [
 ]
 
 function Home() {
+    const { colors } = useTheme();
+
     const webUrl = useAppSelector(state => state.web.url);
 
     return (
@@ -50,8 +52,8 @@ function Home() {
             <Tabs.Navigator
                 screenOptions={{
                     headerShown: false,
-                    tabBarActiveTintColor: '#10b981',
-                    tabBarInactiveTintColor: '#d6d3d1',
+                    tabBarActiveTintColor: colors.violet["500"],
+                    tabBarInactiveTintColor: colors.light["100"],
                 }}
             >
                 {TAB_LIST.map(({ name, component, icon, }) => (

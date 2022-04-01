@@ -29,35 +29,43 @@ function SignIn({ navigation }: NativeStackScreenProps) {
 
                 <VStack space={3} mt="5">
                     <FormControl>
-                        <FormControl.Label color="light.100">Username</FormControl.Label>
-                        <Input value={username} onChangeText={setUsername} _focus={{
-                            borderColor: "tertiary.500",
-                        }} />
+                        <FormControl.Label _text={{ color: "light.100" }}>Username</FormControl.Label>
+                        <Input
+                            value={username}
+                            onChangeText={setUsername}
+                            color="light.200"
+                            _focus={{borderColor: "violet.500",}}
+                            autoCapitalize="none"
+                        />
                     </FormControl>
                     <FormControl>
-                        <FormControl.Label color="light.100">Password</FormControl.Label>
-                        <Input type="password" value={password} onChangeText={setPassword} _focus={{
-                            borderColor: "tertiary.500",
-                        }} />
+                        <FormControl.Label _text={{ color: "light.100" }}>Password</FormControl.Label>
+                        <Input
+                            type="password"
+                            value={password}
+                            onChangeText={setPassword}
+                            color="light.200"
+                            _focus={{ borderColor: "violet.500", }}
+                        />
                         <Link _text={{
                             fontSize: "xs",
                             fontWeight: "500",
-                            color: "blue.500"
+                            color: "violet.500"
                         }} alignSelf="flex-end" mt="1">
                             Forgot Password?
                         </Link>
                     </FormControl>
-                    <Button onPress={onSubmit} isLoading={loading} mt="2" bgColor="tertiary.500">
+                    <Button onPress={onSubmit} isLoading={loading} mt="2" bgColor="violet.500">
                         Sign in
                     </Button>
                     <HStack mt="6" justifyContent="center">
-                        <Text fontSize="sm" color="coolGray.600">
+                        <Text fontSize="sm" color="light.100">
                             New to Profital?{" "}
                         </Text>
                             <Link
                                 onPress={() => navigation.navigate("SignUp")}
                                 _text={{
-                                    color: "blue.500",
+                                    color: "violet.500",
                                     fontWeight: "medium",
                                     fontSize: "sm"
                                 }}
