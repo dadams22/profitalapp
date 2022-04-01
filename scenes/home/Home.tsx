@@ -1,14 +1,15 @@
 import React from "react";
-import {Box, Center, useTheme} from "native-base";
+import {Box, useTheme} from "native-base";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {faChartColumn, faHouse, faMagnifyingGlass, faUser, IconDefinition} from "@fortawesome/free-solid-svg-icons";
+
 import Feed from "./scenes/Feed";
 import Portfolio from "./scenes/Portfolio";
 import Search from "./scenes/Search";
 import Account from "./scenes/Account";
-import {useAppSelector} from "../../state/hooks";
 import WebViewModal from "../../components/WebViewModal";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import {faChartColumn, faHouse, faMagnifyingGlass, faUser, IconDefinition} from "@fortawesome/free-solid-svg-icons";
+import {useAppSelector} from "../../state/hooks";
 
 const Tabs = createBottomTabNavigator();
 
