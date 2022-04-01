@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Box, Button, Center, FormControl, Heading, HStack, Input, Link, Text, VStack} from "native-base";
-import { Link as NavigationLink } from "@react-navigation/native";
-import {NativeStackNavigationProp, NativeStackScreenProps} from "@react-navigation/native-stack";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
 import {login} from "../../state/userSlice";
 

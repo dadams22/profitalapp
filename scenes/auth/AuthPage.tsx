@@ -1,9 +1,10 @@
 import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {Center, Spinner} from "native-base";
+
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import {useAppSelector} from "../../state/hooks";
-import {Center, Spinner} from "native-base";
 
 const Stack = createNativeStackNavigator();
 
