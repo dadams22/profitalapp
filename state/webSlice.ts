@@ -11,8 +11,7 @@ export const webSlice = createSlice({
     initialState,
     reducers: {
         openUrl: ((state, action: PayloadAction<string>) => {
-            const url = action.payload;
-            state.url = url;
+            state.url = action.payload;
         }),
         close: (state) => state.url = undefined,
     },

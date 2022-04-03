@@ -22,7 +22,6 @@ function Feed() {
 
         setLoading(true);
         NewsService
-            .getInstance()
             .getNews(nextPage)
             .then((responseData) => {
                 setArticles([...articles, ...responseData.data])

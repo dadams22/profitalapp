@@ -27,22 +27,8 @@ interface NewsResponseData {
 }
 
 class NewsService {
-    private static _instance: NewsService;
-    private _base: InstanceType<typeof ApiBase>;
-
-    static getInstance(): InstanceType<typeof NewsService> {
-        if (!NewsService._instance) {
-            NewsService._instance = new NewsService();
-        }
-        return this._instance
-    }
-
-    constructor() {
-        this._base = ApiBase.getInstance();
-    }
-
-    async getNews(page: number = 1): Promise<NewsResponseData> {
-        const response = await this._base.axios.get('news/', { params: { page }});
+    static async getNews(page: number = 1): Promise<NewsResponseData> {
+        const response = await ApiBase.axios.get('news/', { params: { page }});
         return response.data;
     }
 }

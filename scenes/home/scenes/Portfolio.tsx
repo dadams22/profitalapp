@@ -11,7 +11,7 @@ function Portfolio() {
     const [linkToken, setLinkToken] = useState<string | undefined>(undefined);
 
     useEffect(() => {
-        AuthService.getInstance().obtainPlaidLinkToken().then(setLinkToken);
+        AuthService.obtainPlaidLinkToken().then(setLinkToken);
     }, [])
 
     const openPlaidLink = () => {

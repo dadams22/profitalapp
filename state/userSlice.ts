@@ -14,26 +14,24 @@ const initialState: UserState = {
     loadingRequest: false,
 }
 
-const authService = AuthService.getInstance();
-
 export const getTokenFromStorage = createAsyncThunk(
     'user/getTokenFromStorage',
     async () => {
-        const token = await authService.getTokenFromStorage();
-        ApiBase.getInstance().setAuthToken(token);
+        const token = await AuthService.getTokenFromStorage();
+        ApiBase.setAuthToken(token);
     }
 );
 
 export const login = createAsyncThunk(
     'user/login',
     async ({ username, password }: { username: string, password: string }) => {
-        await authService.obtainAuthToken(username, password);
+        await AuthService.obtainAuthToken(username, password);
     }
 );
 
 export const signOut = createAsyncThunk('user/signOut',
     async () => {
-        await AuthService.getInstance().signOut();
+        await AuthService.signOut();
     }
 );
 

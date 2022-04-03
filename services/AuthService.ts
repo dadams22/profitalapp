@@ -2,23 +2,8 @@ import ApiBase from "./ApiBase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthService {
-    private static _instance: AuthService;
-    private _base: InstanceType<typeof ApiBase>;
-
-    static getInstance(): InstanceType<typeof AuthService> {
-        if (!AuthService._instance) {
-            AuthService._instance = new AuthService();
-        }
-        return this._instance
-    }
-
-    constructor() {
-        this._base = ApiBase.getInstance();
-    }
-
-    async obtainAuthToken(username: string, password: string) {
-        const response = await this._base.axios.post('token-auth/', { username, password });
-        console.log(response);
+    static async obtainAuthToken(username: string, password: string) {
+        const response = await ApiBase.axios.post('token-auth/', { username, password });
         const token = response.data.token;
 
         if (!token) {
@@ -27,10 +12,10 @@ class AuthService {
 
         await AsyncStorage.setItem('TOKEN', token)
             .catch(() => console.log('Error occurred storing token'));
-        this._base.setAuthToken(token);
+        ApiBase.setAuthToken(token);
     }
 
-    async getTokenFromStorage(): Promise<string> {
+    static async getTokenFromStorage(): Promise<string> {
         const token = await AsyncStorage.getItem('TOKEN');
         if (!token) {
             throw Error('Error retrieving token from storage');
@@ -39,13 +24,13 @@ class AuthService {
         return token;
     }
 
-    async signOut() {
+    static async signOut() {
         await AsyncStorage.removeItem('TOKEN');
-        this._base.removeAuthToken();
+        ApiBase.removeAuthToken();
     }
 
-    async obtainPlaidLinkToken(): Promise<string> {
-        const response = await this._base.axios.get('plaid-link-token/');
+    static async obtainPlaidLinkToken(): Promise<string> {
+        const response = await ApiBase.axios.get('plaid-link-token/');
         return response.data.link_token;
     }
 }
