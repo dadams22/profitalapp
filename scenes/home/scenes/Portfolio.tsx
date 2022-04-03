@@ -20,8 +20,6 @@ function Portfolio() {
         dispatch(openUrl(webLink));
     }
 
-    console.log(linkToken);
-
     return (
         <Box safeArea bgColor="dark.50" w="100%" minH="100%">
             {linkToken && (

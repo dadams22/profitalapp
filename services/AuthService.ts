@@ -10,8 +10,7 @@ class AuthService {
             throw Error('Token was not returned in the response');
         }
 
-        await AsyncStorage.setItem('TOKEN', token)
-            .catch(() => console.log('Error occurred storing token'));
+        await AsyncStorage.setItem('TOKEN', token);
         ApiBase.setAuthToken(token);
     }
 
