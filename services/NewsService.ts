@@ -1,5 +1,17 @@
 import ApiBase from "./ApiBase";
 
+interface Entity {
+    symbol: string;
+    name: string;
+    exchange: string;
+    exchange_long: string;
+    country: string;
+    type: string;
+    industry: string;
+    match_score: number;
+    sentiment_score: number;
+}
+
 export interface Article {
     uuid: string;
     title: string;
@@ -12,7 +24,7 @@ export interface Article {
     published_at: string;
     source: string;
     relevance_score: null,
-    entities: [];
+    entities: Entity[];
     similar: [];
 }
 

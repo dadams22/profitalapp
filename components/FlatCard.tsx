@@ -1,25 +1,53 @@
 import React from "react";
-import {AspectRatio, Box, Heading, Image, Pressable, Stack, Text} from "native-base";
+import {AspectRatio, Box, Heading, HStack, Image, Pressable, Stack, Text} from "native-base";
 
 interface ComponentProps {
     title: string;
     subtitle: string;
     imageUri: string;
-    tag: string;
+    tags: string[];
     description?: string;
     footerText: string;
     onPress?: () => void;
 }
 
-function FlatCard({ title, subtitle, imageUri, tag, description, footerText, onPress, }: ComponentProps) {
+function FlatCard({ title, subtitle, imageUri, tags, description, footerText, onPress, }: ComponentProps) {
     return (
         <Pressable onPress={onPress}>
             <Box alignItems="center">
-                <Box w="100%" overflow="hidden" borderRadius={10} shadow={4} backgroundColor="dark.100">
-                    <Box>
+                <Box
+                    w="100%"
+                    overflow="hidden"
+                    borderRadius={10}
+                    shadow={4}
+                    backgroundColor="dark.100"
+                >
+                    <Box position="relative">
                         <AspectRatio w="100%" ratio={16 / 9}>
                             <Image source={{ uri: imageUri }} alt="image" />
                         </AspectRatio>
+                        {tags && (
+                            <HStack
+                                space="xs"
+                                position="absolute"
+                                bottom={0}
+                                left={0}
+                                m={2}
+                            >
+                                {tags.map((tag) => (
+                                    <Box key={tag} bgColor="violet.700" borderRadius={'3xl'}>
+                                        <Text
+                                            color="light.100"
+                                            fontWeight="bold"
+                                            fontSize="xs"
+                                            padding={2}
+                                        >
+                                            {tag}
+                                        </Text>
+                                    </Box>
+                                ))}
+                            </HStack>
+                        )}
                     </Box>
                     <Stack p="4" space={3}>
                         <Stack space={2}>

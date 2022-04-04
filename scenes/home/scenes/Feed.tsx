@@ -7,7 +7,6 @@ import { openUrl } from "../../../state/webSlice";
 import {useAppDispatch} from "../../../state/hooks";
 
 
-
 function Feed() {
     const dispatch = useAppDispatch();
 
@@ -48,7 +47,7 @@ function Feed() {
                         Live Updates
                     </Heading>
                 }
-                renderItem={({ item: article }) => (
+                renderItem={({ item: article }) => {console.log(article); return(
                     <Box px={4} pt={4}>
                         <FlatCard
                             key={article.uuid}
@@ -57,11 +56,15 @@ function Feed() {
                             imageUri={article.image_url}
                             description={article.description}
                             footerText={''}
-                            tag={''}
+                            tags={
+                                article.entities
+                                    .filter(entity => entity.type === 'equity' && !entity.symbol.includes('.'))
+                                    .map(entity => entity.symbol)
+                            }
                             onPress={() => dispatch(openUrl(article.url))}
                         />
                     </Box>
-                )}
+                )}}
                 ListFooterComponent={<Spinner size="lg" color="violet.500" my={20} />}
             />
         </Box>

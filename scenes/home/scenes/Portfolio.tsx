@@ -13,7 +13,6 @@ function Portfolio() {
     const dispatch = useAppDispatch();
 
     const holdings = useAppSelector(state => state.portfolio.holdings);
-    console.log(holdings);
 
     const [linkToken, setLinkToken] = useState<string | undefined>(undefined);
 
@@ -31,7 +30,11 @@ function Portfolio() {
 
     return (
         <Box safeArea bgColor="dark.50" w="100%" minH="100%">
-            <Button onPress={openPlaid} bgColor="dark.100" _text={{ color: 'light.100'}}>
+            <Button
+                onPress={openPlaid}
+                bgColor="black"
+                _text={{ color: 'light.100', fontWeight: 'medium' }}
+            >
                 Connect your Account
             </Button>
             {linkToken && isPlaidOpen && (

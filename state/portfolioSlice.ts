@@ -1,11 +1,14 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import PortfolioService from "../services/PortfolioService";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import PortfolioService, {Account, Holding, Security} from "../services/PortfolioService";
 
 export interface PortfolioState {
-    holdings: any;
+    loading: boolean;
+    accounts?: Account[];
+    holdings?: Holding[];
+    securities?: Security[];
 }
 
-const initialState: PortfolioState = { holdings: {} };
+const initialState: PortfolioState = { loading: true };
 
 export const getHoldings = createAsyncThunk('portfolio/getHoldings', async () => {
     return await PortfolioService.getHoldings();
@@ -17,7 +20,10 @@ export const portfolioSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getHoldings.fulfilled, (state, action) => {
-            state.holdings = action.payload;
+            const { accounts, holdings, securities } = action.payload;
+            state.accounts = accounts;
+            state.holdings = holdings;
+            state.securities = securities;
         })
     }
 })
