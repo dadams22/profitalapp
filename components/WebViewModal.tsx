@@ -6,6 +6,7 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 import {useAppDispatch} from "../state/hooks";
 import {close} from "../state/webSlice";
+import FullScreenModal from "./FullScreenModal";
 
 interface ComponentProps {
     url: string;
@@ -17,21 +18,14 @@ function WebViewModal({ url }: ComponentProps) {
     const onRequestClose = () => dispatch(close());
 
     return (
-        <Box
-            safeAreaTop
-            position="absolute"
-            left={0}
-            w="100%"
-            h="100%"
-            zIndex={999}
-        >
+        <FullScreenModal>
             <Box bgColor="dark.50" px={4} py={2}>
                 <Pressable onPress={onRequestClose} alignSelf="flex-end">
                     <FontAwesomeIcon icon={faXmark} color="#fafaf9" size={24} />
                 </Pressable>
             </Box>
             <WebView source={{ uri: url }} />
-        </Box>
+        </FullScreenModal>
     );
 }
 

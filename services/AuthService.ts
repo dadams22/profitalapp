@@ -32,6 +32,10 @@ class AuthService {
         const response = await ApiBase.axios.get('plaid-link-token/');
         return response.data.link_token;
     }
+
+    static async exchangePlaidPublicToken(publicToken: string): Promise<void> {
+        await ApiBase.axios.post('plaid-exchange-public-token/', { public_token: publicToken });
+    }
 }
 
 export default AuthService;

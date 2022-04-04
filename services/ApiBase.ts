@@ -5,7 +5,7 @@ const { manifest } = Constants;
 const API_BASE_URL = 'http://2b46-2610-148-1f02-3000-ac87-2262-f2aa-11f.ngrok.io/api';
 
 class ApiBase {
-    static axios = axios.create({ baseURL: API_BASE_URL, });
+    static axios = axios.create({ baseURL: API_BASE_URL, headers: { 'Content-Type': 'application/json' },});
 
     static setAuthToken(token: string) {
         ApiBase.axios.defaults.headers.common['Authorization'] = `Token ${token}`;

@@ -43,7 +43,7 @@ export const userSlice = createSlice({
         builder.addCase(login.pending, (state) => {
             state.loadingRequest = true;
         })
-        builder.addCase(login.fulfilled, (state, action) => {
+        builder.addCase(login.fulfilled, (state) => {
             state.authenticated = true
             state.loadingRequest = false
         })
