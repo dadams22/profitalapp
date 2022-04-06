@@ -5,8 +5,15 @@ import {Center, Spinner} from "native-base";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import {useAppSelector} from "../../state/hooks";
+import PlaidConnect from "./PlaidConnect";
 
-const Stack = createNativeStackNavigator();
+export type AuthStackParamList = {
+    SignIn: undefined;
+    SignUp: undefined;
+    PlaidConnect: undefined;
+};
+
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 function AuthPage() {
     const checkingStatus = useAppSelector(state => state.user.checkingStatus);
@@ -21,6 +28,7 @@ function AuthPage() {
                 <Stack.Navigator screenOptions={{ headerShown: false, }}>
                     <Stack.Screen name="SignIn" component={SignIn} />
                     <Stack.Screen name="SignUp" component={SignUp} />
+                    <Stack.Screen name="PlaidConnect" component={PlaidConnect} />
                 </Stack.Navigator>
             )
     );

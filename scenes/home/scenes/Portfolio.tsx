@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Box, Button} from "native-base";
+import {Box, Button, Center} from "native-base";
 import AuthService from "../../../services/AuthService";
 import useModal from "../../../hooks/useModal";
 import FullScreenModal from "../../../components/FullScreenModal";
@@ -30,13 +30,15 @@ function Portfolio() {
 
     return (
         <Box safeArea bgColor="dark.50" w="100%" minH="100%">
-            <Button
-                onPress={openPlaid}
-                bgColor="black"
-                _text={{ color: 'light.100', fontWeight: 'medium' }}
-            >
-                Connect your Account
-            </Button>
+            <Center>
+                <Button
+                    onPress={openPlaid}
+                    bgColor="black"
+                    _text={{ color: 'light.100', fontWeight: 'bold' }}
+                >
+                    Connect your Account
+                </Button>
+            </Center>
             {linkToken && isPlaidOpen && (
                 <FullScreenModal>
                     <PlaidLink

@@ -10,8 +10,12 @@ class AuthService {
             throw Error('Token was not returned in the response');
         }
 
-        await AsyncStorage.setItem('TOKEN', token);
+        await AuthService.storeAuthToken(token);
         ApiBase.setAuthToken(token);
+    }
+
+    static async storeAuthToken(token: string) {
+        await AsyncStorage.setItem('TOKEN', token);
     }
 
     static async getTokenFromStorage(): Promise<string> {
@@ -21,6 +25,13 @@ class AuthService {
         }
 
         return token;
+    }
+
+    static async signUp(formData: { email: string, username: string, password: string }) {
+        const response = await ApiBase.axios.post('create-user/', formData);
+        const token = response.data.token;
+        await AuthService.storeAuthToken(token);
+        ApiBase.setAuthToken(token);
     }
 
     static async signOut() {

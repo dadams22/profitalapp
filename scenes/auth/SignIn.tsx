@@ -2,19 +2,27 @@ import React, {useState} from "react";
 import {Box, Button, Center, FormControl, Heading, HStack, Input, Link, Text, VStack} from "native-base";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 
-import {useAppDispatch, useAppSelector} from "../../state/hooks";
-import {login} from "../../state/userSlice";
+import {useAppDispatch} from "../../state/hooks";
+import {setAuthenticated} from "../../state/userSlice";
+import AuthService from "../../services/AuthService";
+import {AuthStackParamList} from "./AuthPage";
 
-function SignIn({ navigation }: NativeStackScreenProps) {
+function SignIn({ navigation }: NativeStackScreenProps<AuthStackParamList, 'SignIn'>) {
     const dispatch = useAppDispatch();
 
-    const loading = useAppSelector(state => state.user.loadingRequest);
+    const [loading, setLoading] = useState<boolean>(false)
 
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
     const onSubmit = () => {
-        dispatch(login({ username, password }));
+        setLoading(true);
+        AuthService.obtainAuthToken(username, password)
+            .then(() => {
+                dispatch(setAuthenticated(true));
+            })
+            .catch(console.log)
+            .finally(() => setLoading(false));
     }
 
     return (

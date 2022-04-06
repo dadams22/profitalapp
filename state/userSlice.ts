@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import AuthService from "../services/AuthService";
 import ApiBase from "../services/ApiBase";
 
@@ -22,13 +22,6 @@ export const getTokenFromStorage = createAsyncThunk(
     }
 );
 
-export const login = createAsyncThunk(
-    'user/login',
-    async ({ username, password }: { username: string, password: string }) => {
-        await AuthService.obtainAuthToken(username, password);
-    }
-);
-
 export const signOut = createAsyncThunk('user/signOut',
     async () => {
         await AuthService.signOut();
@@ -38,18 +31,12 @@ export const signOut = createAsyncThunk('user/signOut',
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        setAuthenticated: (state, action: PayloadAction<boolean>) => {
+            state.authenticated = action.payload
+        },
+    },
     extraReducers: (builder) => {
-        builder.addCase(login.pending, (state) => {
-            state.loadingRequest = true;
-        })
-        builder.addCase(login.fulfilled, (state) => {
-            state.authenticated = true
-            state.loadingRequest = false
-        })
-        builder.addCase(login.rejected, (state) => {
-            state.loadingRequest = false;
-        })
         builder.addCase(getTokenFromStorage.fulfilled, (state) => {
             state.authenticated = true;
             state.checkingStatus = false;
@@ -63,5 +50,7 @@ export const userSlice = createSlice({
         })
     }
 })
+
+export const { setAuthenticated } = userSlice.actions;
 
 export default userSlice.reducer;

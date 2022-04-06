@@ -9,7 +9,7 @@ function Account() {
     const onLogoutPress = () => dispatch(signOut());
 
     return (
-        <Box bgColor="dark.50" w="100%" minH="100%" p={4}>
+        <Box safeAreaTop bgColor="dark.50" w="100%" minH="100%" p={4}>
             <Center>
                 <Button bgColor="red.500" onPress={onLogoutPress}>
                     Sign Out
