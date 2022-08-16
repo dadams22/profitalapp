@@ -5,6 +5,7 @@ import FlatCard from "../../../components/FlatCard";
 import NewsService, {Article} from "../../../services/NewsService";
 import { openUrl } from "../../../state/webSlice";
 import {useAppDispatch} from "../../../state/hooks";
+import {timeSince} from "../../../util/time";
 
 
 function Feed() {
@@ -47,7 +48,7 @@ function Feed() {
                         Live Updates
                     </Heading>
                 }
-                renderItem={({ item: article }) => {console.log(article); return(
+                renderItem={({ item: article }) => (
                     <Box px={4} pt={4}>
                         <FlatCard
                             key={article.uuid}
@@ -55,16 +56,22 @@ function Feed() {
                             subtitle={article.source}
                             imageUri={article.image_url}
                             description={article.description}
-                            footerText={''}
+                            footerText={timeSince(article.published_at)}
                             tags={
                                 article.entities
-                                    .filter(entity => entity.type === 'equity' && !entity.symbol.includes('.'))
-                                    .map(entity => entity.symbol)
+                                    .map(entity =>
+                                        entity.holding_info?.institution_value && entity.holding_info?.quantity ?
+                                            `${entity.symbol} - $${entity.holding_info.institution_value} (${entity.holding_info.quantity})`
+                                            : entity.symbol
+                                    )
                             }
-                            onPress={() => dispatch(openUrl(article.url))}
+                            onPress={() => dispatch(openUrl(
+                                { url: article.url, title: article.title, subtitle: article.source, }
+                                ))
+                            }
                         />
                     </Box>
-                )}}
+                )}
                 ListFooterComponent={<Spinner size="lg" color="violet.500" my={20} />}
             />
         </Box>

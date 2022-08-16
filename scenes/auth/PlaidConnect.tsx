@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Center, Heading, Link, Text, VStack} from "native-base";
+import {Box, Button, Heading, Link, Text, VStack} from "native-base";
 // @ts-ignore
 import PlaidLink from '@burstware/expo-plaid-link';
 
@@ -18,10 +18,19 @@ function PlaidConnect({}: ComponentProps) {
         AuthService.obtainPlaidLinkToken().then(setLinkToken);
     });
 
+    const onPlaidSuccess = (publicTokenResponse: { publicToken: string }) => {
+        const publicToken = publicTokenResponse.publicToken;
+        AuthService.exchangePlaidPublicToken(publicToken).then(closePlaid);
+    }
+
     return (
         <Box safeAreaTop w="100%" h="100%" bgColor="dark.50">
             {isPlaidOpen ? (
-                <PlaidLink linkToken={linkToken} />
+                <PlaidLink
+                    linkToken={linkToken}
+                    onSuccess={onPlaidSuccess}
+                    onExit={closePlaid}
+                />
             ) : (
                 <VStack h="100%" m={10} space={20} justifyContent="center" alignItems="center">
                     <VStack w="100%" space="md">

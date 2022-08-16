@@ -45,11 +45,12 @@ const TAB_LIST: TabDefinition[] = [
 function Home() {
     const { colors } = useTheme();
 
-    const webUrl = useAppSelector(state => state.web.url);
+    const webParams = useAppSelector(state => state.web);
 
+    // @ts-ignore
     return (
         <Box width="100%" minH="100%" bgColor="dark.50">
-            {webUrl && <WebViewModal url={webUrl} />}
+            {webParams && webParams.url && <WebViewModal {...webParams} />}
             <Tabs.Navigator
                 screenOptions={{
                     headerShown: false,

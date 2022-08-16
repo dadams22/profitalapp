@@ -40,7 +40,8 @@ function FlatCard({ title, subtitle, imageUri, tags, description, footerText, on
                                             color="light.100"
                                             fontWeight="bold"
                                             fontSize="xs"
-                                            padding={2}
+                                            px={2}
+                                            py={1}
                                         >
                                             {tag}
                                         </Text>
@@ -63,15 +64,11 @@ function FlatCard({ title, subtitle, imageUri, tags, description, footerText, on
                                 {description}
                             </Text>
                         )}
-                        {/*<HStack alignItems="center" space={4} justifyContent="space-between">*/}
-                        {/*    <HStack alignItems="center">*/}
-                        {/*        <Text color="coolGray.600" _dark={{*/}
-                        {/*            color: "warmGray.200"*/}
-                        {/*        }} fontWeight="400">*/}
-                        {/*            6 mins ago*/}
-                        {/*        </Text>*/}
-                        {/*    </HStack>*/}
-                        {/*</HStack>*/}
+                        <HStack alignItems="center">
+                            <Text color="light.400" fontWeight="400">
+                                {footerText}
+                            </Text>
+                        </HStack>
                     </Stack>
                 </Box>
             </Box>

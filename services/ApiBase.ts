@@ -2,7 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import Constants from "expo-constants";
 
 const { manifest } = Constants;
-const API_BASE_URL = 'http://a171-2600-1005-b062-5207-b4bc-6ca1-10b2-e9c5.ngrok.io/api';
+const API_BASE_URL = 'http://efbb-2601-645-8201-e840-a405-9c1b-34cd-633f.ngrok.io/api';
 
 class ApiBase {
     static axios = axios.create({ baseURL: API_BASE_URL, headers: { 'Content-Type': 'application/json' },});

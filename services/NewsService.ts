@@ -1,4 +1,5 @@
 import ApiBase from "./ApiBase";
+import {Holding, Security} from "./PortfolioService";
 
 interface Entity {
     symbol: string;
@@ -10,6 +11,7 @@ interface Entity {
     industry: string;
     match_score: number;
     sentiment_score: number;
+    holding_info: Holding & Security;
 }
 
 export interface Article {
@@ -28,19 +30,31 @@ export interface Article {
     similar: [];
 }
 
+interface ResponseMeta {
+    found: number;
+    returned: number;
+    limit: number;
+    page: number;
+}
+
 interface NewsResponseData {
-    meta: {
-        found: number;
-        returned: number;
-        limit: number;
-        page: number;
-    }
+    meta: ResponseMeta;
     data: Article[];
+}
+
+interface EntityResponseData {
+    meta: ResponseMeta;
+    data: Entity[];
 }
 
 class NewsService {
     static async getNews(page: number = 1): Promise<NewsResponseData> {
         const response = await ApiBase.axios.get('news/', { params: { page }});
+        return response.data;
+    }
+
+    static async searchEntities(searchValue: string): Promise<EntityResponseData> {
+        const response = await ApiBase.axios.get('entity-search/', { params: { search: searchValue }});
         return response.data;
     }
 }

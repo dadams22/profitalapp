@@ -21,7 +21,7 @@ function AuthPage() {
     return (
         checkingStatus ? (
                 <Center h="100%" w="100%" bgColor="dark.50">
-                    <Spinner color="tertiary.500" />
+                    <Spinner color="violet.500" />
                 </Center>
             ) :
             (
