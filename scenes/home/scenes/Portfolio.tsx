@@ -8,6 +8,7 @@ import {useAppDispatch, useAppSelector} from "../../../state/hooks";
 // @ts-ignore
 import PlaidLink from "@burstware/expo-plaid-link";
 import {getHoldings} from "../../../state/portfolioSlice";
+import PageLayout from "../../../components/PageLayout";
 
 function Portfolio() {
     const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ function Portfolio() {
     }
 
     return (
-        <Box safeArea bgColor="dark.50" w="100%" minH="100%">
+        <PageLayout headerText="Portfolio">
             <Center>
                 <Button
                     onPress={openPlaid}
@@ -48,7 +49,8 @@ function Portfolio() {
                     />
                 </FullScreenModal>
             )}
-        </Box>
+            <Box h="1000px" />
+        </PageLayout>
     );
 }
 

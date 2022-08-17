@@ -2,6 +2,7 @@ import React from "react";
 import {useAppDispatch} from "../../../state/hooks";
 import {signOut} from "../../../state/userSlice";
 import {Box, Button, Center} from "native-base";
+import PageLayout from "../../../components/PageLayout";
 
 function Account() {
     const dispatch = useAppDispatch();
@@ -9,13 +10,13 @@ function Account() {
     const onLogoutPress = () => dispatch(signOut());
 
     return (
-        <Box safeAreaTop bgColor="dark.50" w="100%" minH="100%" p={4}>
+        <PageLayout headerText="Account">
             <Center>
                 <Button bgColor="red.500" onPress={onLogoutPress}>
                     Sign Out
                 </Button>
             </Center>
-        </Box>
+        </PageLayout>
     );
 }
 
