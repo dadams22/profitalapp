@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Box, Button, Center} from "native-base";
+import {noop} from "lodash";
 import AuthService from "../../../services/AuthService";
 import useModal from "../../../hooks/useModal";
 import FullScreenModal from "../../../components/FullScreenModal";
@@ -9,6 +10,7 @@ import {useAppDispatch, useAppSelector} from "../../../state/hooks";
 import PlaidLink from "@burstware/expo-plaid-link";
 import {getHoldings} from "../../../state/portfolioSlice";
 import PageLayout from "../../../components/PageLayout";
+import PlaidButton from "../../../components/PlaidButton";
 
 function Portfolio() {
     const dispatch = useAppDispatch();
@@ -31,14 +33,8 @@ function Portfolio() {
 
     return (
         <PageLayout headerText="Portfolio">
-            <Center>
-                <Button
-                    onPress={openPlaid}
-                    bgColor="black"
-                    _text={{ color: 'light.100', fontWeight: 'bold' }}
-                >
-                    Connect your Account
-                </Button>
+            <Center h="100%">
+                <PlaidButton onPress={openPlaid} />
             </Center>
             {linkToken && isPlaidOpen && (
                 <FullScreenModal>
@@ -49,7 +45,6 @@ function Portfolio() {
                     />
                 </FullScreenModal>
             )}
-            <Box h="1000px" />
         </PageLayout>
     );
 }
