@@ -1,6 +1,12 @@
 import ApiBase from "./ApiBase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+export type User = {
+    email: string;
+    username: string;
+    is_plaid_connected: boolean;
+}
+
 class AuthService {
     static async obtainAuthToken(username: string, password: string) {
         const response = await ApiBase.axios.post('token-auth/', { username, password });
@@ -46,6 +52,11 @@ class AuthService {
 
     static async exchangePlaidPublicToken(publicToken: string): Promise<void> {
         await ApiBase.axios.post('plaid-exchange-public-token/', { public_token: publicToken });
+    }
+
+    static async getUser(): Promise<User> {
+        const response = await ApiBase.axios.get('user/');
+        return response.data;
     }
 }
 

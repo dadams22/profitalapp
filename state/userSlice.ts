@@ -1,11 +1,12 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import AuthService from "../services/AuthService";
+import AuthService, {User} from "../services/AuthService";
 import ApiBase from "../services/ApiBase";
 
 export interface UserState {
     authenticated: boolean;
     checkingStatus: boolean;
     loadingRequest: boolean;
+    user?: User;
 }
 
 const initialState: UserState = {
@@ -28,6 +29,10 @@ export const signOut = createAsyncThunk('user/signOut',
     }
 );
 
+export const getUser = createAsyncThunk('user/get',
+    async () => await AuthService.getUser()
+);
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -47,6 +52,9 @@ export const userSlice = createSlice({
         })
         builder.addCase(signOut.fulfilled, (state) => {
             state.authenticated = false;
+        })
+        builder.addCase(getUser.fulfilled, (state, action) => {
+            state.user = action.payload;
         })
     }
 })

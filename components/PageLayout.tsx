@@ -2,7 +2,7 @@ import React from 'react';
 import {Box, Heading, ScrollView} from "native-base";
 
 interface ComponentProps {
-    headerText: string;
+    headerText?: string;
     children?: React.ReactNode;
 }
 
@@ -10,9 +10,11 @@ function PageLayout({ headerText, children }: ComponentProps) {
     return (
         <ScrollView>
             <Box safeAreaTop px={4} py={8} bgColor="dark.50" minH="100%">
-                <Heading size="xl" color="light.100" pb={4}>
-                    {headerText}
-                </Heading>
+                {headerText && (
+                    <Heading size="xl" color="light.100" pb={4}>
+                        {headerText}
+                    </Heading>
+                )}
                 {children}
             </Box>
         </ScrollView>

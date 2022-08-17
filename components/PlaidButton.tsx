@@ -8,7 +8,7 @@ interface ComponentProps {
 
 function PlaidButton({ onPress }: ComponentProps) {
     return (
-        <Button onPress={onPress} bgColor="light.50" color="light.900">
+        <Button onPress={onPress} bgColor="light.50" color="light.900" margin="auto">
             <HStack display="flex" alignItems="center" space="sm">
                 <PlaidIcon />
                 <Text color="black" bold fontSize="xl">

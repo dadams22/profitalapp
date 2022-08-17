@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Box, Button, Center} from "native-base";
+import {Box, Button, Center, Divider, Heading, Text, VStack} from "native-base";
 import {noop} from "lodash";
 import AuthService from "../../../services/AuthService";
 import useModal from "../../../hooks/useModal";
@@ -13,6 +13,8 @@ import PageLayout from "../../../components/PageLayout";
 import PlaidButton from "../../../components/PlaidButton";
 
 function Portfolio() {
+    const isPlaidConnected = false;
+
     const dispatch = useAppDispatch();
 
     const holdings = useAppSelector(state => state.portfolio.holdings);
@@ -32,9 +34,29 @@ function Portfolio() {
     }
 
     return (
-        <PageLayout headerText="Portfolio">
+        <PageLayout headerText={isPlaidConnected ? "Portfolio" : undefined}>
             <Center h="100%">
-                <PlaidButton onPress={openPlaid} />
+                <VStack space="xl">
+                    <VStack
+                        space="xs"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        px={2}
+                    >
+                        <Heading size="lg" bold color="light.50" textAlign="center">
+                            Start Tracking your Portfolio
+                        </Heading>
+                        <Box w={160}>
+                            <Divider bgColor="violet.700" />
+                        </Box>
+                        <Text color="light.200" textAlign="center">
+                            Profital securely syncs with your brokerage account through Plaid to personalize your
+                            experience based on the assets that you hold.
+                        </Text>
+                    </VStack>
+                    <PlaidButton onPress={openPlaid} />
+                </VStack>
             </Center>
             {linkToken && isPlaidOpen && (
                 <FullScreenModal>

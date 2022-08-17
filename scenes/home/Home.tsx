@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Box, useTheme} from "native-base";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -9,7 +9,8 @@ import Portfolio from "./scenes/Portfolio";
 import Search from "./scenes/Search";
 import Account from "./scenes/Account";
 import WebViewModal from "../../components/WebViewModal";
-import {useAppSelector} from "../../state/hooks";
+import {useAppDispatch, useAppSelector} from "../../state/hooks";
+import {getUser} from "../../state/userSlice";
 
 const Tabs = createBottomTabNavigator();
 
@@ -46,6 +47,12 @@ function Home() {
     const { colors } = useTheme();
 
     const webParams = useAppSelector(state => state.web);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getUser());
+    }, []);
 
     // @ts-ignore
     return (
