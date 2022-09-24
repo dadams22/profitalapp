@@ -9,7 +9,7 @@ import {close} from "../state/webSlice";
 import FullScreenModal from "./FullScreenModal";
 
 interface ComponentProps {
-    url: string;
+    url?: string;
     title: string;
     subtitle: string;
 }

@@ -10,9 +10,10 @@ function FullScreenModal({ children }: ComponentProps) {
         <Box
             safeAreaTop
             position="absolute"
+            top={0}
             left={0}
-            w="100%"
-            h="100%"
+            bottom={0}
+            right={0}
             zIndex={999}
         >
             {children}

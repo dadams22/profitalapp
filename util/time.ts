@@ -29,4 +29,6 @@ export function timeSince(dateTime: string): string {
             return `${quantity} ${name}${plural ? 's' : ''} ago`
         }
     }
+
+    return '';
 }
