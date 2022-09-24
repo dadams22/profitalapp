@@ -10,8 +10,9 @@ import {useAppDispatch, useAppSelector} from "../../../../state/hooks";
 import PlaidLink from "@burstware/expo-plaid-link";
 import {getHoldings} from "../../../../state/portfolioSlice";
 import PageLayout from "../../../../components/PageLayout";
-import PlaidButton from "../../../../components/PlaidButton";
+import PlaidButton from "../../../../components/plaid/PlaidButton";
 import { getUser } from "../../../../state/userSlice";
+import PlaidConnect from "../../../../components/plaid/PlaidConnect";
 
 function Portfolio() {
     const isPlaidConnected: boolean = useAppSelector(state => state.user.user?.is_plaid_connected || false);
@@ -38,38 +39,7 @@ function Portfolio() {
 
     return (
         <PageLayout headerText={isPlaidConnected ? "Portfolio" : undefined}>
-            <Center h="100%">
-                <VStack space="xl">
-                    <VStack
-                        space="xs"
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        px={2}
-                    >
-                        <Heading size="lg" bold color="light.50" textAlign="center">
-                            Start Tracking your Portfolio
-                        </Heading>
-                        <Box w={160}>
-                            <Divider bgColor="violet.700" />
-                        </Box>
-                        <Text color="light.200" textAlign="center">
-                            Profital securely syncs with your brokerage account through Plaid to personalize your
-                            experience based on the assets that you hold.
-                        </Text>
-                    </VStack>
-                    <PlaidButton onPress={openPlaid} />
-                </VStack>
-            </Center>
-            {linkToken && (
-                <FullScreenModal show={isPlaidOpen}>
-                    <PlaidLink
-                        linkToken={linkToken}
-                        onSuccess={onPlaidSuccess}
-                        onExit={closePlaid}
-                    />
-                </FullScreenModal>
-            )}
+            <PlaidConnect onSuccess={console.log} />
         </PageLayout>
     );
 }

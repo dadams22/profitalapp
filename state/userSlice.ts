@@ -7,6 +7,7 @@ export interface UserState {
     checkingStatus: boolean;
     loadingRequest: boolean;
     user?: User;
+    plaid_link_token?: string;
 }
 
 const initialState: UserState = {
@@ -62,8 +63,10 @@ export const userSlice = createSlice({
             state.user = action.payload;
         })
         builder.addCase(createUser.fulfilled, (state, action) => {
-            state.user = action.payload;
+            const { user, plaid_link_token } = action.payload;
             state.authenticated = true;
+            state.user = user;
+            state.plaid_link_token = plaid_link_token;
         })
     }
 })
