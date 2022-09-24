@@ -3,8 +3,12 @@ import {Box, Button, Center, FormControl, Heading, HStack, Input, Link, Text, VS
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import AuthService from "../../services/AuthService";
 import {AuthStackParamList} from "./AuthPage";
+import { useAppDispatch } from "../../state/hooks";
+import { createUser } from "../../state/userSlice";
 
 function SignUp({ navigation }: NativeStackScreenProps<AuthStackParamList, 'SignUp'>) {
+    const dispatch = useAppDispatch();
+
     const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<string>('');
     const [username, setUsername] = useState<string>('');
@@ -13,9 +17,8 @@ function SignUp({ navigation }: NativeStackScreenProps<AuthStackParamList, 'Sign
 
     const onSubmit = () => {
         setLoading(true);
-        AuthService.signUp({ email, username, password })
+        dispatch(createUser({ email, username, password }))
             .then(() => navigation.navigate('PlaidConnect'))
-            .catch(console.log)
             .finally(() => setLoading(false));
     }
 

@@ -19,7 +19,7 @@ function PlaidConnect({}: ComponentProps) {
 
     useEffect(() => {
         AuthService.obtainPlaidLinkToken().then(setLinkToken);
-    });
+    }, []);
 
     const onPlaidSuccess = (publicTokenResponse: { publicToken: string }) => {
         const publicToken = publicTokenResponse.publicToken;

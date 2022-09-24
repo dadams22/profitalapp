@@ -33,6 +33,11 @@ export const getUser = createAsyncThunk('user/get',
     async () => await AuthService.getUser()
 );
 
+export const createUser = createAsyncThunk('user/create',
+    async (formData: { email: string; username: string; password: string;}) =>  
+        await AuthService.createUser(formData)
+)
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -55,6 +60,10 @@ export const userSlice = createSlice({
         })
         builder.addCase(getUser.fulfilled, (state, action) => {
             state.user = action.payload;
+        })
+        builder.addCase(createUser.fulfilled, (state, action) => {
+            state.user = action.payload;
+            state.authenticated = true;
         })
     }
 })

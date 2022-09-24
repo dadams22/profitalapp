@@ -33,11 +33,12 @@ class AuthService {
         return token;
     }
 
-    static async signUp(formData: { email: string, username: string, password: string }) {
-        const response = await ApiBase.axios.post('create-user/', formData);
-        const token = response.data.token;
+    static async createUser(formData: { email: string, username: string, password: string }): Promise<User> {
+        const response = await ApiBase.axios.post<{ user: User; token: string }>('create-user/', formData);
+        const { user, token } = response.data;
         await AuthService.storeAuthToken(token);
         ApiBase.setAuthToken(token);
+        return user;
     }
 
     static async signOut() {
