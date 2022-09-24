@@ -1,13 +1,15 @@
 import React from "react";
-import {Box} from "native-base";
+import {Box, Slide} from "native-base";
 
 interface ComponentProps{
+    show: boolean;
     children: React.ReactNode;
 }
 
-function FullScreenModal({ children }: ComponentProps) {
+function FullScreenModal({ show, children }: ComponentProps) {
     return (
-        <Box
+        <Slide in={show} placement="bottom" duration={300}>
+            <Box
             safeAreaTop
             position="absolute"
             top={0}
@@ -15,9 +17,11 @@ function FullScreenModal({ children }: ComponentProps) {
             bottom={0}
             right={0}
             zIndex={999}
-        >
-            {children}
-        </Box>
+            display="flex"
+            >
+                {children}
+            </Box>
+        </Slide>
     )
 }
 

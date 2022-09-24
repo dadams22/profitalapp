@@ -57,7 +57,7 @@ function Home() {
     // @ts-ignore
     return (
         <Box width="100%" minH="100%" bgColor="dark.50">
-            {webParams && webParams.url && <WebViewModal {...webParams} />}
+            <WebViewModal {...webParams} />
             <Tabs.Navigator
                 screenOptions={{
                     headerShown: false,

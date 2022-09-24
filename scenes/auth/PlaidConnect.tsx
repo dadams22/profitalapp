@@ -15,6 +15,8 @@ function PlaidConnect({}: ComponentProps) {
     const [linkToken, setLinkToken] = useState<string | undefined>(undefined);
     const { isOpen: isPlaidOpen, open: openPlaid, close: closePlaid } = useModal();
 
+    console.log(isPlaidOpen);
+
     useEffect(() => {
         AuthService.obtainPlaidLinkToken().then(setLinkToken);
     });
@@ -26,8 +28,8 @@ function PlaidConnect({}: ComponentProps) {
 
     return (
         <Box safeAreaTop w="100%" h="100%" bgColor="dark.50">
-            {isPlaidOpen && (
-                <FullScreenModal>
+            {linkToken && (
+                <FullScreenModal show={isPlaidOpen}>
                     <PlaidLink
                         linkToken={linkToken}
                         onSuccess={onPlaidSuccess}
@@ -47,7 +49,7 @@ function PlaidConnect({}: ComponentProps) {
                 <VStack justifyContent="center" alignItems="center" space="md">
                     <Button
                         onPress={openPlaid}
-                        isLoading={!linkToken}
+                        disabled={!linkToken}
                         size="lg"
                         bgColor="black"
                         _text={{ color: 'light.100', fontWeight: 'bold', }}

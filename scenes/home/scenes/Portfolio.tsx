@@ -58,8 +58,8 @@ function Portfolio() {
                     <PlaidButton onPress={openPlaid} />
                 </VStack>
             </Center>
-            {linkToken && isPlaidOpen && (
-                <FullScreenModal>
+            {linkToken && (
+                <FullScreenModal show={isPlaidOpen}>
                     <PlaidLink
                         linkToken={linkToken}
                         onSuccess={onPlaidSuccess}
