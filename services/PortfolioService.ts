@@ -16,20 +16,6 @@ export interface Account {
     type: string;
 }
 
-
-export interface Holding {
-    account_id: string;
-    cost_basis: number | null;
-    institution_price: number;
-    institution_price_as_of: string | null;
-    institution_value: number;
-    iso_currency_code: string | null;
-    quantity: number;
-    security_id: string;
-    unofficial_currency_code: null
-}
-
-
 export interface Security {
     close_price: number | null;
     close_price_as_of: string | null;
@@ -49,10 +35,22 @@ export interface Security {
 }
 
 
+export interface Holding extends Security {
+    account_id: string;
+    cost_basis: number | null;
+    institution_price: number;
+    institution_price_as_of: string | null;
+    institution_value: number;
+    iso_currency_code: string | null;
+    quantity: number;
+    security_id: string;
+    unofficial_currency_code: null
+}
+
+
 interface GetHoldingsResponse {
-    accounts: Account[];
+    balance: number;
     holdings: Holding[];
-    securities: Security[];
 }
 
 

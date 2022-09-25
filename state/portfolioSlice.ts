@@ -3,9 +3,10 @@ import PortfolioService, {Account, Holding, Security} from "../services/Portfoli
 
 export interface PortfolioState {
     loading: boolean;
-    accounts?: Account[];
-    holdings?: Holding[];
-    securities?: Security[];
+    portfolio?: {
+        balance: number;
+        holdings: Holding[];
+    }
 }
 
 const initialState: PortfolioState = { loading: true };
@@ -20,10 +21,8 @@ export const portfolioSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getHoldings.fulfilled, (state, action) => {
-            const { accounts, holdings, securities } = action.payload;
-            state.accounts = accounts;
-            state.holdings = holdings;
-            state.securities = securities;
+            state.loading = false;
+            state.portfolio = action.payload
         })
     }
 })

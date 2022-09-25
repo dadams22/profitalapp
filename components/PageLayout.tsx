@@ -11,7 +11,7 @@ function PageLayout({ headerText, children }: ComponentProps) {
         <ScrollView>
             <Box safeAreaTop px={4} py={8} bgColor="dark.50" minH="100%">
                 {headerText && (
-                    <Heading size="xl" color="light.100" pb={4}>
+                    <Heading size="2xl" color="light.100" pb={4}>
                         {headerText}
                     </Heading>
                 )}

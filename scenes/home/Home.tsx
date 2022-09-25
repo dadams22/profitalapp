@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {faChartColumn, faHouse, faMagnifyingGlass, faUser, IconDefinition} from "@fortawesome/free-solid-svg-icons";
 
 import Feed from "./scenes/Feed";
-import Portfolio from "./scenes/portfolio/Portfolio";
+import Portfolio from "./scenes/Portfolio";
 import Search from "./scenes/Search";
 import Account from "./scenes/Account";
 import WebViewModal from "../../components/WebViewModal";
