@@ -38,7 +38,7 @@ function WebViewModal({ show, url, title, subtitle }: ComponentProps) {
                     </Pressable>
                 </HStack>
             </Box>
-            {url && <WebView source={{ uri: url }} />}
+            <WebView source={url ? { uri: url } : undefined} />
         </FullScreenModal>
     );
 }

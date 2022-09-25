@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = 'https://659d-2601-645-8201-e70-b138-dbf4-e114-2524.ngrok.io/api';
+const API_BASE_URL = 'https://d56b-2601-645-8201-e70-b138-dbf4-e114-2524.ngrok.io/api';
 
 class ApiBase {
     static axios = axios.create({ baseURL: API_BASE_URL, headers: { 'Content-Type': 'application/json' },});
