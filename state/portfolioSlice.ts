@@ -6,6 +6,7 @@ export interface PortfolioState {
     portfolio?: {
         balance: number;
         holdings: Holding[];
+        currencies: Holding[];
     }
 }
 
@@ -21,6 +22,7 @@ export const portfolioSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getHoldings.fulfilled, (state, action) => {
+            console.log(action.payload);
             state.loading = false;
             state.portfolio = action.payload
         })

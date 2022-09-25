@@ -51,6 +51,7 @@ export interface Holding extends Security {
 interface GetHoldingsResponse {
     balance: number;
     holdings: Holding[];
+    currencies: Holding[];
 }
 
 
