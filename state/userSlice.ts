@@ -39,6 +39,10 @@ export const createUser = createAsyncThunk('user/create',
         await AuthService.createUser(formData)
 )
 
+export const obtainPlaidLinkToken = createAsyncThunk('user/getPlaidLinkToken',
+    async () => await AuthService.obtainPlaidLinkToken()
+)
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -64,9 +68,11 @@ export const userSlice = createSlice({
         })
         builder.addCase(createUser.fulfilled, (state, action) => {
             const { user, plaid_link_token } = action.payload;
-            state.authenticated = true;
             state.user = user;
             state.plaid_link_token = plaid_link_token;
+        })
+        builder.addCase(obtainPlaidLinkToken.fulfilled, (state, action) => {
+            state.plaid_link_token = action.payload;
         })
     }
 })

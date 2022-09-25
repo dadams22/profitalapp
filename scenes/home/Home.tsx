@@ -10,7 +10,7 @@ import Search from "./scenes/Search";
 import Account from "./scenes/Account";
 import WebViewModal from "../../components/WebViewModal";
 import {useAppDispatch, useAppSelector} from "../../state/hooks";
-import {getUser} from "../../state/userSlice";
+import {getUser, obtainPlaidLinkToken} from "../../state/userSlice";
 
 const Tabs = createBottomTabNavigator();
 
@@ -46,12 +46,18 @@ const TAB_LIST: TabDefinition[] = [
 function Home() {
     const { colors } = useTheme();
 
+    const plaidLinkToken = useAppSelector(state => state.user.plaid_link_token);
+
     const webParams = useAppSelector(state => state.web);
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(getUser());
+
+        if (!plaidLinkToken) {
+            dispatch(obtainPlaidLinkToken())
+        }
     }, []);
 
     // @ts-ignore

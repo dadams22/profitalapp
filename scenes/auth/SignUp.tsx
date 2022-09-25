@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Box, Button, Center, FormControl, Heading, HStack, Input, Link, Text, VStack} from "native-base";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import AuthService from "../../services/AuthService";
 import {AuthStackParamList} from "./AuthPage";
 import { useAppDispatch } from "../../state/hooks";
 import { createUser } from "../../state/userSlice";
