@@ -40,14 +40,27 @@ function Portfolio() {
                                 </Text>
                                 <Text color="light.400">your current holdings</Text>
                             </Center>
-                            <VStack space="sm">
+                            <VStack space="xs">
                                 {portfolio.holdings.map((holding) => (
-                                    <HStack>
-                                        <VStack>
-                                            <Text color="light.100" fontWeight="medium" fontSize="lg">{holding.ticker_symbol}</Text>
-                                            <Text color="violet.500">{`${holding.quantity} shares`}</Text>
-                                        </VStack>
-                                    </HStack>
+                                    <>
+                                        <HStack justifyContent="space-between" key={holding.ticker_symbol}>
+                                            <VStack maxWidth="45%">
+                                                <Text color="light.100" fontWeight="medium" fontSize="md">
+                                                    {holding.ticker_symbol}
+                                                </Text>
+                                                <Text color="violet.500" isTruncated>{holding.name}</Text>
+                                            </VStack>
+                                            <VStack justifyContent="center">
+                                                <Text fontSize="md" color="light.100" textAlign="right">
+                                                    {`$${(holding.quantity * holding.institution_price).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}
+                                                </Text>
+                                                <Text fontSize="sm" color="light.200" textAlign="right">
+                                                    {holding.quantity}
+                                                </Text>
+                                            </VStack>
+                                        </HStack>
+                                        <Divider bg="dark.200" />
+                                    </>
                                 ))}
                             </VStack>
                         </>
