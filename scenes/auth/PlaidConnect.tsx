@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import { Box } from 'native-base';
 
 import { useAppDispatch } from '../../state/hooks';
 import { setAuthenticated } from '../../state/userSlice';
 import PlaidCallToAction from '../../components/plaid/PlaidCallToAction';
-import { Box } from 'native-base';
 
 function PlaidConnect() {
     const dispatch = useAppDispatch();

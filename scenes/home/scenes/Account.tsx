@@ -1,7 +1,7 @@
 import React from "react";
 import {useAppDispatch} from "../../../state/hooks";
 import {signOut} from "../../../state/userSlice";
-import {Box, Button, Center} from "native-base";
+import {Button, Center} from "native-base";
 import PageLayout from "../../../components/PageLayout";
 
 function Account() {

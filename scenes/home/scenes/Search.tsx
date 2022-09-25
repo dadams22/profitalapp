@@ -1,10 +1,9 @@
 import React, {useState} from "react";
+import _ from "lodash";
 import {Box, Button, Center, Divider, HStack, Input, ScrollView, Spinner, Text, useTheme, VStack} from "native-base";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import NewsService from "../../../services/NewsService";
-import _ from "lodash";
-import PageHeader from "../../../components/PageLayout";
 import PageLayout from "../../../components/PageLayout";
 
 function Search() {

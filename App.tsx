@@ -4,13 +4,13 @@ import {
     extendTheme,
     StatusBar,
 } from "native-base";
-
 import {NavigationContainer, Theme as NavigationTheme, DarkTheme, DefaultTheme} from "@react-navigation/native";
 import {Provider} from "react-redux";
-import {store} from "./state/store";
-import Root from "./Root";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {library} from "@fortawesome/fontawesome-svg-core";
+
+import {store} from "./state/store";
+import Root from "./Root";
 
 // Define the config
 const config = {

@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Box, Button, Center, Divider, Heading, HStack, List, Spinner, Text, VStack} from "native-base";
-import {noop} from "lodash";
+import {Center, Divider, Heading, HStack, Spinner, Text, VStack} from "native-base";
 import AuthService from "../../../services/AuthService";
-import useModal from "../../../hooks/useModal";
-import FullScreenModal from "../../../components/FullScreenModal";
 import {useAppDispatch, useAppSelector} from "../../../state/hooks";
 import {getHoldings} from "../../../state/portfolioSlice";
 import PageLayout from "../../../components/PageLayout";
-import { getUser } from "../../../state/userSlice";
-import PlaidConnect from "../../../components/plaid/PlaidCallToAction";
 import PlaidCallToAction from "../../../components/plaid/PlaidCallToAction";
 
 function Portfolio() {

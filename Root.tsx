@@ -3,7 +3,6 @@ import {useAppDispatch, useAppSelector} from "./state/hooks";
 import AuthPage from "./scenes/auth/AuthPage";
 import Home from "./scenes/home/Home";
 import {getTokenFromStorage} from "./state/userSlice";
-import AuthService from "./services/AuthService";
 
 function Root() {
     const dispatch = useAppDispatch();

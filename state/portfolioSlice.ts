@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import PortfolioService, {Account, Holding, Security} from "../services/PortfolioService";
+import PortfolioService, {Holding} from "../services/PortfolioService";
 
 export interface PortfolioState {
     loading: boolean;

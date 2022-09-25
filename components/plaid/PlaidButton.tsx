@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, HStack, Text} from "native-base";
+import {Button, HStack, Text} from "native-base";
 import PlaidIcon from "../icons/PlaidIcon";
 
 interface ComponentProps {

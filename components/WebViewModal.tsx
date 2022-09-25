@@ -1,6 +1,6 @@
 import React from "react";
 import WebView from "react-native-webview";
-import {Box, Center, HStack, Pressable, Slide, Text, VStack} from "native-base";
+import {Box, HStack, Pressable, Text, VStack} from "native-base";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
